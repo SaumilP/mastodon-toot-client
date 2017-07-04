@@ -1,0 +1,11 @@
+target/
+**/*.rs.bk
+Cargo.lock
+*~
+/build/
+/lib/
+/lib-stamps/
+*.o
+.project
+.settings/
+

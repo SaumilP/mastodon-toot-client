@@ -1,0 +1,16 @@
+[package]
+name = "mastodon-bot"
+version = "0.0.1"
+authors = ["Saumil Patel <saumilpatel1@gmail.com>"]
+description = "Finds cities along the same latitude and longitude so you know where you are."
+readme = "README.md"
+
+[dependencies]
+csv = "0.15.0"
+rustc-serialize = "0.3.23"
+lazy_static = "0.2.8"
+itertools = "0.6.0"
+assert_approx_eq = "1.0.0"
+rand = "0.3.15"
+mammut = "0.6.0"
+dotenv = "0.10.0"

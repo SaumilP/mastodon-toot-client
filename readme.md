@@ -16,3 +16,9 @@ To compile and execute this bot below steps can be taken.
 Pre-requisite
 ---
 Make sure `cargo` is installed before attempting to build this bot.
+
+Snippets
+---
+![Alt text](mastodon_bot_shell_01.jpeg?raw=true "Result on shell")
+
+![Alt text](mastodon_bot_site_01.jpeg?raw=true "Result on Mastodon")

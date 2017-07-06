@@ -1,10 +1,10 @@
-mastodon-bot
+mastodon-toot-client
 ---
-This is an attempt to build mastodon based [bot](https://botsin.space/@honor) which is written in rust-lang and reads and toots a message to dedicated channel.
+This is an attempt to build mastodon tooter [client](https://botsin.space/@honor) in rust-lang. It reads random location from given file and constructs message with geographical location before tooting to dedicated target mastodon channel.
 
 Installation
 ---
-To compile and execute this bot below steps can be taken.
+To compile and execute this client below steps can be taken.
 
 1. Create a new `botsin.space` account.
 2. Use [Access Token Generator](https://takahashim.github.io/mastodon-access-token/) for Mastodon API
@@ -15,7 +15,8 @@ To compile and execute this bot below steps can be taken.
 
 Pre-requisite
 ---
-Make sure `cargo` is installed before attempting to build this bot.
+Make sure `cargo` is installed before attempting to build this client.
+
 
 Snippets
 ---

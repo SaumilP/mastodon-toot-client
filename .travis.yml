@@ -1,0 +1,15 @@
+language: rust
+rust:
+  - stable
+
+branches:
+  only:
+    - master
+
+env:
+  global:
+   - secure: "P0m+VCrbrVn3ivv3JHg8beXHtOp140vwPXnscAXmk7VpqmsV80FjR3LdcnpGvghAAm8kGmHPro9NCjOe2IbQBvK+ILk21NmZn42gyOZtcTE7u0+Ftx1T5f0VoOOYgKLzuStSVkmHmiS9in7HYpLXKlgiEzvUwk2g2eP41rJeEKA="
+
+script:
+  - cargo build --verbose --all
+  - cargo test --verbose --all

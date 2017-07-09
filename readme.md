@@ -1,4 +1,4 @@
-mastodon-toot-client [![Build Status](https://travis-ci.org/SaumilP/mastodon-toot-client.svg)](https://travis-ci.org/SaumilP/mastodon-toot-client)]]
+mastodon-toot-client [![Build Status](https://travis-ci.org/SaumilP/mastodon-toot-client.svg)](https://travis-ci.org/SaumilP/mastodon-toot-client)
 ---
 This is an attempt to build mastodon tooter [client](https://botsin.space/@honor) in rust-lang. It reads random location from given file and constructs message with geographical location before tooting to dedicated target mastodon channel.
 

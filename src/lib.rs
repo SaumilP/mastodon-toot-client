@@ -1,21 +1,15 @@
-#[macro_use]
-extern crate lazy_static;
-extern crate csv;
-extern crate rustc_serialize;
-extern crate itertools;
-extern crate rand;
-
-#[allow(unused_imports)]
-#[macro_use]
-extern crate assert_approx_eq;
-
 use itertools::{Itertools, Either};
-use rand::{thread_rng, sample};
+use rand::prelude::IndexedRandom;
+use lazy_static::lazy_static;
+use serde::Deserialize;
 
 use std::fmt;
 use std::convert::From;
+use std::path::Path;
+use csv::{ReaderBuilder};
+use std::fs::File;
 
-#[derive(RustcDecodable)]
+#[derive(Deserialize)]
 struct Record {
     city: String,
     _city_ascii: String,
@@ -28,7 +22,7 @@ struct Record {
     province: String,
 }
 
-#[derive(PartialEq, Clone, Debug)]
+#[derive(Deserialize, PartialEq, Clone, Debug)]
 pub struct City {
     name: String,
     latitude: f64,
@@ -57,13 +51,48 @@ impl From<Record> for City {
     }
 }
 
+fn load_data() -> Result<Vec<City>, Box<dyn std::error::Error>> {
+    let file_path = Path::new("./simplemaps-worldcities-basic.csv");
+    let file = File::open(file_path)
+        .map_err(|e| format!("Failed to open file {}: {}", file_path.display(), e))?;
+
+    // Initialize CSV reader
+    let mut rdr = ReaderBuilder::new().has_headers(false).from_reader(file);
+
+    // Print the number of records to be processed
+    println!("Reading data from file: {:?}", file_path);
+
+    let mut cities: Vec<City> = Vec::new();
+
+    // Deserialize the CSV rows
+    for (index, result) in rdr.deserialize::<Record>().enumerate() {
+        match result {
+            Ok(record) => {
+                // Successfully deserialized, convert into City and push to the vector
+                let city: City = record.into();
+                cities.push(city);
+                if index % 1000 == 0 {
+                    println!("Processed {} records...", index + 1); // Print progress
+                }
+            }
+            Err(e) => {
+                // Error during deserialization, print which record failed
+                eprintln!("Error deserializing row {}: {:?}", index, e);
+            }
+        }
+    }
+
+    // Check if we have data
+    if cities.is_empty() {
+        return Err("No valid city data found in CSV file.".into());
+    }
+
+    println!("Successfully loaded {} cities.", cities.len());
+    Ok(cities)
+}
+
 lazy_static! {
-    static ref DATA: Vec<City> = csv::Reader::from_file("./simplemaps-worldcities-basic.csv")
-        .unwrap()
-        .decode::<Record>()
-        .map(Result::unwrap)
-        .map(Record::into)
-        .collect();
+    static ref DATA: Vec<City> = load_data().unwrap();
 
     static ref NORTH_POLE: City = City {
         name: String::from("North Pole"),
@@ -97,10 +126,10 @@ const NUM_CITIES_LATITUDE: usize = 9;
 const NUM_CITIES_LONGITUDE: usize = 11;
 
 pub fn random_location() -> String {
-    let mut rng = thread_rng();
-    let sample = sample(&mut rng, DATA.iter(), 1);
+    let mut rng = rand::rng();
+    let city = DATA.choose(&mut rng).unwrap();
 
-    location_text(sample[0])
+    location_text(city)
 }
 
 pub fn location_text(city: &City) -> String {
@@ -265,6 +294,7 @@ fn longitude_in_degrees(coord: f64) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use assert_approx_eq::assert_approx_eq;
 
     #[test]
     fn it_finds_cities_with_same_latitude() {

@@ -1,6 +1,6 @@
 language: rust
 rust:
-  - stable
+  - 1.92.0
 
 branches:
   only:

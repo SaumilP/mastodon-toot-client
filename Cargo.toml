@@ -1,16 +1,21 @@
 [package]
-name = "mastodon-bot"
-version = "0.0.1"
-authors = ["Saumil Patel <saumilpatel1@gmail.com>"]
+name = "mastodon-toot-bot"
+version = "0.1.0"
+edition = "2024"
+authors = ["Saumil Patel <email2saumil2024@gmail.com>"]
 description = "Finds cities along the same latitude and longitude so you know where you are."
+license = "MIT"
+repository = "https://github.com/SaumilP/mastodon-toot-client"
 readme = "README.md"
 
 [dependencies]
-csv = "0.15.0"
-rustc-serialize = "0.3.23"
-lazy_static = "0.2.8"
-itertools = "0.6.0"
-assert_approx_eq = "1.0.0"
-rand = "0.3.15"
-mammut = "0.6.0"
-dotenv = "0.10.0"
+csv = "1.3"
+serde = { version = "1.0", features = ["derive"] }
+serde_derive = "1.0"
+lazy_static = "1.5"
+itertools = "0.14.0"
+assert_approx_eq = "1.1"
+rand = { version = "0.9", features = ["thread_rng"] }
+elefren = "0.22"
+dotenv = "0.15"
+mammut = "0.13"

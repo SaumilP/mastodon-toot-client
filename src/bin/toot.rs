@@ -1,7 +1,7 @@
 // file responsible for sending toot to Mastodon social site...
 
 use mammut::{Data, Mastodon, Registration, status_builder::StatusBuilder, apps::{AppBuilder, Scopes}};
-use mastodon-toot-bot::random_location;
+use mastodon_toot_bot::random_location;
 use dotenv;
 
 fn main() {

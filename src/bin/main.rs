@@ -1,5 +1,5 @@
-extern crate mastodon-toot-bot;
+extern crate mastodon_toot_bot;
 
 fn main() {
-	println!("{}", mastodon-toot-bot::random_location());
+	println!("{}", mastodon_toot_bot::random_location());
 }

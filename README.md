@@ -27,7 +27,7 @@ This repo is designed to be **safe to automate** (GitHub Actions / cron), with *
 
 ---
 
-## Quickstart
+## 🚀 Quickstart
 
 ### Prerequisites
 - Rust (stable) + Cargo
@@ -105,11 +105,11 @@ cargo run -- \
 
 ---
 
-## Scheduling (GitHub Actions)
+## 🏗 Scheduling (GitHub Actions)
 
 This repo includes a scheduled workflow example: `.github/workflows/schedule-toot.yml`.
 
-### Required secrets
+### 🔐 Required secrets
 
 Set these under: **Settings → Secrets and variables → Actions**
 - `MASTODON_BASE_URL`
@@ -121,7 +121,7 @@ Optional:
 
 ---
 
-## Testing & Quality
+## 🧪 Testing & Quality
 
 Run locally:
 
@@ -145,7 +145,7 @@ See `SECURITY.md`.
 
 ---
 
-## Roadmap
+## 🗺️ Roadmap
 
 - [ ] CSV schema support (e.g., city name + country fields)
 - [ ] Rate limit/backoff and retry strategy

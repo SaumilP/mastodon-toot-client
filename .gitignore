@@ -8,3 +8,11 @@ Cargo.lock
 *.o
 .project
 .settings/
+.idea/
+.vscode/
+.cargo/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+node_modules/
